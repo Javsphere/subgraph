@@ -7,7 +7,7 @@ import {
 } from "../generated/schema"
 import {BigDecimal, BigInt} from "@graphprotocol/graph-ts";
 
-export function handleClaim(event: ClaimUserReward): void {
+export function handleClaimUserReward(event: ClaimUserReward): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
     entity.amount = event.params.amount
@@ -22,7 +22,7 @@ export function handleClaim(event: ClaimUserReward): void {
     entity.save()
 }
 
-export function handleStake(event: Deposit): void {
+export function handleDeposit(event: Deposit): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
     entity.amount = event.params.amount
@@ -38,7 +38,7 @@ export function handleStake(event: Deposit): void {
 }
 
 
-export function handleUnstake(event: Withdraw): void {
+export function handleWithdraw(event: Withdraw): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
     entity.amount = event.params.amount
@@ -60,21 +60,21 @@ function weiToEth(wei: BigInt): BigDecimal {
 }
 
 function getLockType(type: BigInt): string {
-    if (type === BigInt.fromString("5")) {
+    if (type.equals(BigInt.fromString("5"))) {
         return "VESTING_FREEZER_10";
-    } else if (type === BigInt.fromString('6')) {
+    } else if (type.equals(BigInt.fromString('6'))) {
         return "VESTING_FREEZER_20";
-    } else if (type === BigInt.fromString('0')) {
+    } else if (type.equals(BigInt.fromString('0'))) {
         return "ONE_MONTH";
-    } else if (type === BigInt.fromString('1')) {
+    } else if (type.equals(BigInt.fromString('1'))) {
         return "THREE_MONTH";
-    } else if (type === BigInt.fromString('2')) {
+    } else if (type.equals(BigInt.fromString('2'))) {
         return "SIX_MONTH";
-    } else if (type === BigInt.fromString('3')) {
+    } else if (type.equals(BigInt.fromString('3'))) {
         return "TWELVE_MONTH";
-    } else if (type === BigInt.fromString('4')) {
+    } else if (type.equals(BigInt.fromString('4'))) {
         return "TWENTY_FOUR_MONTH";
     } else {
-        throw "UNKNOWN";
+        return "UNKNOWN";
     }
 }

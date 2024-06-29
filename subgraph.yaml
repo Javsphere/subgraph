@@ -46,9 +46,9 @@ dataSources:
           file: ./abis/JavFreezer.json
       eventHandlers:
         - event: ClaimUserReward(indexed address,uint256,indexed uint256,indexed uint256)
-          handler: handleClaim
+          handler: handleClaimUserReward
         - event: Deposit(indexed address,uint256,indexed uint256,indexed uint256,uint256,uint256)
-          handler: handleStake
+          handler: handleDeposit
         - event: Withdraw(indexed address,uint256,indexed uint256,indexed uint256)
-          handler: handleUnstake
+          handler: handleWithdraw
       file: ./src/jav-freezer.ts
