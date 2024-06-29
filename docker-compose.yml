@@ -16,7 +16,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:https://dmc-priv01.mydefichain.com/mainnet'
+      ethereum: 'mainnet:https://dmc.mydefichain.com/mainnet'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.17.0

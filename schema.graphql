@@ -14,3 +14,32 @@ type StakeLog @entity(immutable: true) {
   date: BigInt!
   type: Type!
 }
+
+enum CryoJavLogLockType {
+  VESTING_FREEZER_10
+  VESTING_FREEZER_20
+  ONE_MONTH
+  THREE_MONTH
+  SIX_MONTH
+  TWELVE_MONTH
+  TWENTY_FOUR_MONTH
+  UNKNOWN
+}
+
+enum FreezerType {
+  DEPOSIT
+  CLAIM
+  WITHDRAW
+}
+
+type FreezerLog @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt!
+  amountEth: BigDecimal!
+  address: Bytes!
+  block: BigInt!
+  tx: Bytes!
+  date: BigInt!
+  type: FreezerType!
+  lockType: CryoJavLogLockType!
+}
