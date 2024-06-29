@@ -5,37 +5,26 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: MetaMultiSigWallet
-    network: sepolia
+    name: JavStakeX
+    network: mainnet
     source:
-      address: "0xB86695ADF328AA1CDfE5b1ac0229554f0194C7a8"
-      abi: MetaMultiSigWallet
-      startBlock: 0
+      address: '0xF923f0828c56b27C8f57bc698c99543f63091E9A'
+      abi: JavStakeX
+      startBlock: 559601
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CloseStream
-        - Deposit
-        - ExecuteTransaction
-        - OpenStream
-        - Owner
-        - Withdraw
+        - StakeLog
       abis:
-        - name: MetaMultiSigWallet
-          file: ./abis/MetaMultiSigWallet.json
+        - name: JavStakeX
+          file: ./abis/JavStakeX.json
       eventHandlers:
-        - event: CloseStream(indexed address)
-          handler: handleCloseStream
-        - event: Deposit(indexed address,uint256,uint256)
-          handler: handleDeposit
-        - event: ExecuteTransaction(indexed address,address,uint256,bytes,uint256,bytes32,bytes)
-          handler: handleExecuteTransaction
-        - event: OpenStream(indexed address,uint256,uint256)
-          handler: handleOpenStream
-        - event: Owner(indexed address,bool)
-          handler: handleOwner
-        - event: Withdraw(indexed address,uint256,string)
-          handler: handleWithdraw
-      file: ./src/meta-multi-sig-wallet.ts
+        - event: Claim(indexed address,indexed address,uint256)
+          handler: handleClaim
+        - event: Stake(indexed address,indexed uint256,uint256)
+          handler: handleStake
+        - event: Unstake(indexed address,uint256,uint256)
+          handler: handleUnstake
+      file: ./src/jav-stakex.ts

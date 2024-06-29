@@ -1,8 +1,0 @@
-{
-  "sepolia": {
-    "MetaMultiSigWallet": {
-      "address": "0xB86695ADF328AA1CDfE5b1ac0229554f0194C7a8",
-      "startBlock": 0
-    }
-  }
-}
