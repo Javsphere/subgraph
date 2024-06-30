@@ -5,7 +5,7 @@ import {
 import {
     StakeLog,
 } from "../generated/schema"
-import {BigDecimal, BigInt} from "@graphprotocol/graph-ts";
+import {weiToEth} from "./util";
 
 export function handleClaim(event: Claim): void {
     let entity = new StakeLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
@@ -48,10 +48,4 @@ export function handleUnstake(event: Unstake): void {
 
     entity.type = "UNSTAKE"
     entity.save()
-}
-
-function weiToEth(wei: BigInt): BigDecimal {
-    let weiAsBigDecimal = wei.toBigDecimal();
-    let eth = weiAsBigDecimal.div(BigDecimal.fromString("1000000000000000000"));
-    return eth;
 }

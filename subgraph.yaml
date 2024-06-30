@@ -52,3 +52,23 @@ dataSources:
         - event: Withdraw(indexed address,uint256,indexed uint256,indexed uint256)
           handler: handleWithdraw
       file: ./src/jav-freezer.ts
+  - kind: ethereum
+    name: JavToken
+    network: mainnet
+    source:
+      address: '0x66F3Cf265D2D146A0348F6fC67E3Da0835e0968E'
+      abi: JavToken
+      startBlock: 358332
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - JavTokenLog
+      abis:
+        - name: JavToken
+          file: ./abis/JavToken.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/jav-token.ts

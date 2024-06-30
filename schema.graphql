@@ -43,3 +43,14 @@ type FreezerLog @entity(immutable: true) {
   type: FreezerType!
   lockType: CryoJavLogLockType!
 }
+
+type JavTokenLog @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt!
+  amountEth: BigDecimal!
+  from: Bytes!
+  to: Bytes!
+  block: BigInt!
+  tx: Bytes!
+  date: BigInt!
+}

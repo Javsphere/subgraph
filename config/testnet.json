@@ -1,6 +1,14 @@
 {
-  "stakeX":
-    { "address": "0x67664a9D58357Bb92Ea6187bD06f33748e74B8d6",
-      "startBlock": 381745
-    }
+  "stakeX": {
+    "address": "0x67664a9D58357Bb92Ea6187bD06f33748e74B8d6",
+    "startBlock": 381745
+  },
+  "javFreezer": {
+    "address": "0xB86695ADF328AA1CDfE5b1ac0229554f0194C7a8",
+    "startBlock": 326281
+  },
+  "javToken": {
+    "address": "0x695D64AdEbD82480f22638E50dA04f6C95df6Ef5",
+    "startBlock": 311994
+  }
 }
