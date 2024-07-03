@@ -8,7 +8,7 @@ dataSources:
     name: JavStakeX
     network: mainnet
     source:
-      address: '0xF923f0828c56b27C8f57bc698c99543f63091E9A'
+      address: "0xF923f0828c56b27C8f57bc698c99543f63091E9A"
       abi: JavStakeX
       startBlock: 559601
     mapping:
@@ -32,7 +32,7 @@ dataSources:
     name: JavFreezer
     network: mainnet
     source:
-      address: '0x4e15D4225623D07Adb43e9D546E57E1E6097e869'
+      address: "0x4e15D4225623D07Adb43e9D546E57E1E6097e869"
       abi: JavFreezer
       startBlock: 412902
     mapping:
@@ -56,7 +56,7 @@ dataSources:
     name: JavToken
     network: mainnet
     source:
-      address: '0x66F3Cf265D2D146A0348F6fC67E3Da0835e0968E'
+      address: "0x66F3Cf265D2D146A0348F6fC67E3Da0835e0968E"
       abi: JavToken
       startBlock: 358332
     mapping:
