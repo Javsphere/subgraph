@@ -15,6 +15,17 @@ type StakeLog @entity(immutable: true) {
   type: Type!
 }
 
+type StakeInfo @entity {
+  id: Bytes!
+  address: Bytes!
+  pool: BigInt!
+  totalStake: BigInt!
+  totalStakeEth: BigDecimal!
+  claimedAmount: BigInt!
+  claimedAmountEth: BigDecimal!
+  freeTokenBalance: JavTokenBalance
+}
+
 enum CryoJavLogLockType {
   VESTING_FREEZER_10
   VESTING_FREEZER_20
@@ -53,4 +64,10 @@ type JavTokenLog @entity(immutable: true) {
   block: BigInt!
   tx: Bytes!
   date: BigInt!
+}
+
+type JavTokenBalance @entity {
+  id: Bytes! #Address of staker wallet
+  balance: BigInt!
+  balanceEth: BigDecimal!
 }
