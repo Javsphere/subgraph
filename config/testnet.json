@@ -10,5 +10,9 @@
   "javToken": {
     "address": "0x695D64AdEbD82480f22638E50dA04f6C95df6Ef5",
     "startBlock": 311994
+  },
+  "javMarket": {
+    "address": "0xa4afEDA32622A31A3A355a6a0FdBB4f78F9B9e08",
+    "startBlock": 242177
   }
 }
