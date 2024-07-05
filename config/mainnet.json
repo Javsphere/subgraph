@@ -14,5 +14,13 @@
   "javMarket": {
     "address": "0x32059D27563F96685911033B271a489b55c1aE58",
     "startBlock": 280524
+  },
+  "javVesting": {
+    "address": "0x7246ad1ac72715c5fd6c1FD7460A63afB8289104",
+    "startBlock": 412893
+  },
+  "javVestingFreezer": {
+    "address": "0xb32C45dF341930791807c18C4CA2A5E0Ab2D226f",
+    "startBlock": 412950
   }
 }

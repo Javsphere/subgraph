@@ -92,3 +92,49 @@ dataSources:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/jav-token.ts
+  - kind: ethereum
+    name: TokenVesting
+    network: mainnet
+    source:
+      address: "0x7246ad1ac72715c5fd6c1FD7460A63afB8289104"
+      abi: TokenVesting
+      startBlock: 412893
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenVestingLog
+        - TokenVestingReleaseLog
+      abis:
+        - name: TokenVesting
+          file: ./abis/TokenVesting.json
+      eventHandlers:
+        - event: Released(indexed bytes32,indexed address,uint256)
+          handler: handleRelease
+        - event: VestingScheduleAdded(indexed address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
+          handler: handleVesting
+      file: ./src/jav-token-vesting.ts
+  - kind: ethereum
+    name: TokenVestingFreezer
+    network: mainnet
+    source:
+      address: "0xb32C45dF341930791807c18C4CA2A5E0Ab2D226f"
+      abi: TokenVestingFreezer
+      startBlock: 412950
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenVestingLog
+        - TokenVestingReleaseLog
+      abis:
+        - name: TokenVestingFreezer
+          file: ./abis/TokenVestingFreezer.json
+      eventHandlers:
+        - event: Released(indexed bytes32,indexed address,uint256)
+          handler: handleRelease
+        - event: VestingScheduleAdded(indexed address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
+          handler: handleVesting
+      file: ./src/jav-token-vesting-freezer.ts

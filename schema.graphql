@@ -109,4 +109,34 @@ enum BuyingType {
   LIMIT
 }
 
+type JavVestingLog @entity(immutable: true) {
+  id: Bytes!
+  address: Bytes!
+  amount: BigInt!
+  amountEth: BigDecimal!
+  cliff: BigInt!
+  start: BigInt!
+  duration: BigInt!
+  slicePeriodSeconds: BigInt!
+  revocable: Boolean!
+  vestingType: BigInt!
+
+  block: BigInt!
+  tx: Bytes!
+  date: BigInt!
+}
+
+
+type JavVestingReleaseLog @entity(immutable: true) {
+  id: Bytes!
+  address: Bytes!
+  amount: BigInt!
+  amountEth: BigDecimal!
+  vestingScheduleId: Bytes!
+
+  block: BigInt!
+  tx: Bytes!
+  date: BigInt!
+}
+
 
