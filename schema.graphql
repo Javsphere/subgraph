@@ -139,4 +139,12 @@ type JavVestingReleaseLog @entity(immutable: true) {
   date: BigInt!
 }
 
+type JavInfinityPassLog @entity(immutable: true) {
+  id: Bytes!
+  address: Bytes!
+  tokenId: BigInt!
+  block: BigInt!
+  tx: Bytes!
+  date: BigInt!
+}
 

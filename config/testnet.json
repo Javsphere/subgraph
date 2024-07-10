@@ -22,6 +22,9 @@
   "javVestingFreezer": {
     "address": "0xF977A2D3EA547731f04B19cfDCE00fe9d23dB485",
     "startBlock": 326259
-
+  },
+  "javInfinityPass": {
+    "address": "0x60b6860F25A7503Bcb5A2ce0940E61D5e503A056",
+    "startBlock": 481845
   }
 }

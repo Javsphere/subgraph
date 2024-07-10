@@ -138,3 +138,23 @@ dataSources:
         - event: VestingScheduleAdded(indexed address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
           handler: handleVesting
       file: ./src/jav-token-vesting-freezer.ts
+  - kind: ethereum
+    name: InfinityPass
+    network: mainnet
+    source:
+      address: "0xd66e71BF4334308ecb550377590078434685B6bE"
+      abi: InfinityPass
+      startBlock: 674106
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - JavInfinityPassLog
+      abis:
+        - name: InfinityPass
+          file: ./abis/InfinityPass.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/jav-infinity-pass.ts
