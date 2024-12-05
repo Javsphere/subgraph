@@ -1,0 +1,28 @@
+{
+  "base": {
+    "JavStakeX": {
+      "address": "0xE420BBb4C2454f305a3335BBdCE069326985fb5b",
+      "startBlock": 23305094
+    },
+    "JavFreezer": {
+      "address": "0x03e225D2bd32F5ecE539005B57F9B94A743ADBFB",
+      "startBlock": 23305424
+    },
+    "JavToken": {
+      "address": "0xEdC68c4c54228D273ed50Fc450E253F685a2c6b9",
+      "startBlock": 22353355
+    },
+    "TokenVesting": {
+      "address": "0x42a40321843220e9811A1385D74d9798436f7002",
+      "startBlock": 23304259
+    },
+    "TokenVestingFreezer": {
+      "address": "0x672BC764615FF9126541f7eb999fc089639d53fe",
+      "startBlock": 23304414
+    },
+    "InfinityPass": {
+      "address": "0xBC2bB8c25162203528A4b5f50890736D8B897E7a",
+      "startBlock": 23304095
+    }
+  }
+}
