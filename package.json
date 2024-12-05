@@ -3,25 +3,23 @@
   "license": "UNLICENSED",
   "version": "1.0.0",
   "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write .",
     "codegen": "graph codegen",
-    "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ javsphere",
-    "create-local": "graph create --node http://localhost:8020/ javsphere",
-    "remove-local": "graph remove --node http://localhost:8020/ javsphere",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 javsphere",
-    "test": "graph test",
-    "deploy-server": "graph deploy --node https://graph.octodefi.com/deploy --ipfs https://ipfs.octodefi.com/ javsphere",
-    "create-server": "graph create --node https://graph.octodefi.com/deploy javsphere",
-    "remove-server": "graph remove --node https://graph.octodefi.com/deploy javsphere",
-    "deploy-server-testnet": "graph deploy --node https://graph-testnet.octodefi.com/deploy --ipfs https://ipfs.octodefi.com/ javsphere",
-    "create-server-testnet": "graph create --node https://graph-testnet.octodefi.com/deploy javsphere",
-    "remove-server-testnet": "graph remove --node https://graph-testnet.octodefi.com/deploy javsphere"
+    "test": "graph test -v 0.5.4",
+    "test:ci": "npm test",
+    "deploy-testnet": "graph deploy --node https://api.studio.thegraph.com/deploy/ javsphere-testnet",
+    "deploy-mainnet": "graph deploy --node https://api.studio.thegraph.com/deploy/ javsphere-mainnet",
+    "create-local": "graph create --node http://localhost:8020/ javsphere-testnet",
+    "remove-local": "graph remove --node http://localhost:8020/ javsphere-testnet",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 javsphere-testnet"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.77.0",
     "@graphprotocol/graph-ts": "0.32.0"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0"
+    "matchstick-as": "0.5.0",
+    "mustache": "^4.2.0"
   }
 }

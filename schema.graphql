@@ -72,43 +72,6 @@ type JavTokenBalance @entity {
   balanceEth: BigDecimal!
 }
 
-type JavMarketLog @entity(immutable: true) {
-  id: Bytes!
-  fromAmount: BigInt!
-  fromAmountEth: BigDecimal!
-  receiveAmount: BigInt!
-  receiveAmountEth: BigDecimal!
-  tradeId: BigInt!
-  type: TradeType!
-  buyingType: BuyingType!
-  fromToken: String!
-  toToken: String!
-
-  tokenId: String!
-  price: BigInt
-  priceEth: BigDecimal
-  block: BigInt!
-  address: Bytes!
-  tx: Bytes!
-  date: BigInt!
-  status: TradeStatus!
-}
-
-enum TradeType {
-  BUY
-  SELL
-}
-
-enum TradeStatus {
-  PENDING
-  COMPLETE
-}
-
-enum BuyingType {
-  INSTANT
-  LIMIT
-}
-
 type JavVestingLog @entity(immutable: true) {
   id: Bytes!
   address: Bytes!

@@ -5,32 +5,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: JavMarket
-    network: mainnet
-    source:
-      address: '0x32059D27563F96685911033B271a489b55c1aE58'
-      abi: JavMarket
-      startBlock: 358332
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - JavMarketLog
-      abis:
-        - name: JavMarket
-          file: ./abis/JavMarket.json
-      eventHandlers:
-        - event: OrderExecuted(indexed uint256,indexed address,uint256,uint256,string,uint8,bool,uint256,string,uint8)
-          handler: handleTrade
-      file: ./src/jav-market.ts
-  - kind: ethereum
     name: JavStakeX
-    network: mainnet
+    network: base
     source:
-      address: "0xF923f0828c56b27C8f57bc698c99543f63091E9A"
       abi: JavStakeX
-      startBlock: 559601
+      address: "0xE420BBb4C2454f305a3335BBdCE069326985fb5b"
+      startBlock: 23305094
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -50,11 +30,11 @@ dataSources:
       file: ./src/jav-stakex.ts
   - kind: ethereum
     name: JavFreezer
-    network: mainnet
+    network: base
     source:
-      address: "0x4e15D4225623D07Adb43e9D546E57E1E6097e869"
       abi: JavFreezer
-      startBlock: 412902
+      address: "0x03e225D2bd32F5ecE539005B57F9B94A743ADBFB"
+      startBlock: 23305424
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -67,18 +47,19 @@ dataSources:
       eventHandlers:
         - event: ClaimUserReward(indexed address,uint256,indexed uint256,indexed uint256)
           handler: handleClaimUserReward
-        - event: Deposit(indexed address,uint256,indexed uint256,indexed uint256,uint256,uint256)
+        - event: Deposit(indexed address,uint256,indexed uint256,indexed
+            uint256,uint256,uint256)
           handler: handleDeposit
         - event: Withdraw(indexed address,uint256,indexed uint256,indexed uint256)
           handler: handleWithdraw
       file: ./src/jav-freezer.ts
   - kind: ethereum
     name: JavToken
-    network: mainnet
+    network: base
     source:
-      address: "0x66F3Cf265D2D146A0348F6fC67E3Da0835e0968E"
       abi: JavToken
-      startBlock: 358332
+      address: "0xEdC68c4c54228D273ed50Fc450E253F685a2c6b9"
+      startBlock: 22353355
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -94,11 +75,11 @@ dataSources:
       file: ./src/jav-token.ts
   - kind: ethereum
     name: TokenVesting
-    network: mainnet
+    network: base
     source:
-      address: "0x7246ad1ac72715c5fd6c1FD7460A63afB8289104"
       abi: TokenVesting
-      startBlock: 412893
+      address: "0x42a40321843220e9811A1385D74d9798436f7002"
+      startBlock: 23304259
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -112,16 +93,17 @@ dataSources:
       eventHandlers:
         - event: Released(indexed bytes32,indexed address,uint256)
           handler: handleRelease
-        - event: VestingScheduleAdded(indexed address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
+        - event: VestingScheduleAdded(indexed
+            address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
           handler: handleVesting
       file: ./src/jav-token-vesting.ts
   - kind: ethereum
     name: TokenVestingFreezer
-    network: mainnet
+    network: base
     source:
-      address: "0xb32C45dF341930791807c18C4CA2A5E0Ab2D226f"
       abi: TokenVestingFreezer
-      startBlock: 412950
+      address: "0x672BC764615FF9126541f7eb999fc089639d53fe"
+      startBlock: 23304414
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -135,16 +117,17 @@ dataSources:
       eventHandlers:
         - event: Released(indexed bytes32,indexed address,uint256)
           handler: handleRelease
-        - event: VestingScheduleAdded(indexed address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
+        - event: VestingScheduleAdded(indexed
+            address,uint256,uint256,uint256,uint256,uint256,bool,uint8)
           handler: handleVesting
       file: ./src/jav-token-vesting-freezer.ts
   - kind: ethereum
     name: InfinityPass
-    network: mainnet
+    network: base
     source:
-      address: "0xd66e71BF4334308ecb550377590078434685B6bE"
       abi: InfinityPass
-      startBlock: 674106
+      address: "0xBC2bB8c25162203528A4b5f50890736D8B897E7a"
+      startBlock: 23304095
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
