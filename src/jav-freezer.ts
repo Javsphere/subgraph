@@ -10,6 +10,7 @@ import {getLockType, weiToEth} from "./util";
 export function handleClaimUserReward(event: ClaimUserReward): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
+    entity.pid = event.params.pid
     entity.amount = event.params.amount
     entity.amountEth = weiToEth(event.params.amount)
     entity.address = event.params.user
@@ -25,6 +26,7 @@ export function handleClaimUserReward(event: ClaimUserReward): void {
 export function handleDeposit(event: Deposit): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
+    entity.pid = event.params.pid
     entity.amount = event.params.amount
     entity.amountEth = weiToEth(event.params.amount)
     entity.address = event.params.user
@@ -41,6 +43,7 @@ export function handleDeposit(event: Deposit): void {
 export function handleWithdraw(event: Withdraw): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
+    entity.pid = event.params.pid
     entity.amount = event.params.amount
     entity.amountEth = weiToEth(event.params.amount)
     entity.address = event.params.user

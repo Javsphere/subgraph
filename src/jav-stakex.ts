@@ -1,7 +1,6 @@
 import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 import {
   Claim,
-  JavStakeX,
   Stake,
   Unstake,
 } from "../generated/JavStakeX/JavStakeX";
@@ -12,7 +11,9 @@ export function handleClaim(event: Claim): void {
   let entity = new StakeLog(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
+  let pid = getPoolId(event.params._token);
 
+  entity.pid = pid;
   entity.amount = event.params._amount;
   entity.amountEth = weiToEth(event.params._amount);
   entity.address = event.params._user;
@@ -23,7 +24,6 @@ export function handleClaim(event: Claim): void {
   entity.type = "CLAIM";
   entity.save();
 
-  let pid = getPoolId(event.params._token);
   let stakeInfo = StakeInfo.load(event.params._user.concatI32(pid.toI32()));
 
   if (stakeInfo) {
@@ -40,6 +40,7 @@ export function handleStake(event: Stake): void {
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
 
+  entity.pid = event.params._pid;
   entity.amount = event.params._amount;
   entity.amountEth = weiToEth(event.params._amount);
   entity.address = event.params._address;
@@ -58,6 +59,7 @@ export function handleStake(event: Stake): void {
     stakeInfo = new StakeInfo(
       event.params._address.concatI32(event.params._pid.toI32())
     );
+    stakeInfo.pid = event.params._pid
     stakeInfo.pool = event.params._pid;
     stakeInfo.address = event.params._address;
     stakeInfo.claimedAmount = BigInt.zero();
@@ -82,6 +84,7 @@ export function handleUnstake(event: Unstake): void {
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
 
+  entity.pid = event.params._pid;
   entity.amount = event.params._amount;
   entity.amountEth = weiToEth(event.params._amount);
   entity.address = event.params._address;

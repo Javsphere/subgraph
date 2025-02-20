@@ -6,6 +6,7 @@ enum Type {
 
 type StakeLog @entity(immutable: true) {
   id: Bytes!
+  pid: BigInt!
   amount: BigInt!
   amountEth: BigDecimal!
   address: Bytes!
@@ -17,6 +18,7 @@ type StakeLog @entity(immutable: true) {
 
 type StakeInfo @entity {
   id: Bytes!
+  pid: BigInt!
   address: Bytes!
   pool: BigInt!
   totalStake: BigInt!
@@ -45,6 +47,7 @@ enum FreezerType {
 
 type FreezerLog @entity(immutable: true) {
   id: Bytes!
+  pid: BigInt!
   amount: BigInt!
   amountEth: BigDecimal!
   address: Bytes!
