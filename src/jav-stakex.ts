@@ -6,6 +6,7 @@ import {
 } from "../generated/JavStakeX/JavStakeX";
 import { JavTokenBalance, StakeInfo, StakeLog } from "../generated/schema";
 import { getPoolId, weiToEth } from "./util";
+import { updateJavInfo, JavInfoImpactType } from "./common";
 
 export function handleClaim(event: Claim): void {
   let entity = new StakeLog(
@@ -23,6 +24,12 @@ export function handleClaim(event: Claim): void {
 
   entity.type = "CLAIM";
   entity.save();
+
+  updateJavInfo(
+    event.block.timestamp,
+    weiToEth(event.params._amount),
+    JavInfoImpactType.CLAIM
+  );
 
   let stakeInfo = StakeInfo.load(event.params._user.concatI32(pid.toI32()));
 

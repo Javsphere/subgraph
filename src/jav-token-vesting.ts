@@ -1,4 +1,5 @@
 import { weiToEth} from "./util";
+import { updateJavInfo, JavInfoImpactType } from "./common";
 import {JavVestingLog, JavVestingReleaseLog} from "../generated/schema";
 import {Released, VestingScheduleAdded} from "../generated/TokenVesting/TokenVesting";
 import {BigInt} from "@graphprotocol/graph-ts";
@@ -18,6 +19,12 @@ export function handleRelease(event: Released): void {
   entity.date = event.block.timestamp;
 
   entity.save();
+
+  updateJavInfo(
+    event.block.timestamp,
+    weiToEth(event.params.amount),
+    JavInfoImpactType.CLAIM
+  );
 }
 
 export function handleVesting(event: VestingScheduleAdded): void {

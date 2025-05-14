@@ -28,9 +28,10 @@ type StakeInfo @entity {
   freeTokenBalance: JavTokenBalance
 }
 
-type JavBurnInfo @entity {
-  id: Bytes!
+type JavInfo @entity {
+  id: ID!
   totalJavBurned: BigDecimal!
+  totalJavClaimed: BigDecimal!
 }
 
 enum CryoJavLogLockType {
@@ -97,6 +98,7 @@ type JavVestingLog @entity(immutable: true) {
   date: BigInt!
 }
 
+
 type JavVestingReleaseLog @entity(immutable: true) {
   id: Bytes!
   address: Bytes!
@@ -117,3 +119,4 @@ type JavInfinityPassLog @entity(immutable: true) {
   tx: Bytes!
   date: BigInt!
 }
+

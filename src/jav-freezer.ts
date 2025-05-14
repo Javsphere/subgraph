@@ -6,6 +6,7 @@ import {
     FreezerLog,
 } from "../generated/schema"
 import {getLockType, weiToEth} from "./util";
+import { updateJavInfo, JavInfoImpactType } from "./common";
 
 export function handleClaimUserReward(event: ClaimUserReward): void {
     let entity = new FreezerLog(event.transaction.hash.concatI32(event.logIndex.toI32()))
@@ -21,6 +22,12 @@ export function handleClaimUserReward(event: ClaimUserReward): void {
 
     entity.type = "CLAIM"
     entity.save()
+
+    updateJavInfo(
+      event.block.timestamp,
+      weiToEth(event.params.amount),
+      JavInfoImpactType.CLAIM
+    );
 }
 
 export function handleDeposit(event: Deposit): void {
