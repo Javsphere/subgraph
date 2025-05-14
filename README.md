@@ -2,6 +2,6 @@
 
 ### Current graph versions:
 #### Base
-v1.0.2
+v1.0.3
 #### Sepolia base
-v1.0.2
+v1.0.3

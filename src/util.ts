@@ -1,4 +1,7 @@
-import {Address, BigDecimal, BigInt} from "@graphprotocol/graph-ts";
+import {Address, BigDecimal, BigInt, Bytes} from "@graphprotocol/graph-ts";
+
+export const ZERO_ADDRESS = Bytes.fromHexString("0x0000000000000000000000000000000000000000") as Bytes;
+export const TOTAL_STATISTIC_ID = Bytes.fromHexString("0x0000000000000000000000000000000000000001") as Bytes;
 
 export function weiToEth(wei: BigInt): BigDecimal {
     let weiAsBigDecimal = wei.toBigDecimal();

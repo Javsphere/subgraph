@@ -1,7 +1,7 @@
 import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 import { Transfer } from "../generated/JavToken/JavToken";
-import { JavTokenBalance, JavTokenLog } from "../generated/schema";
-import { weiToEth } from "./util";
+import { JavTokenBalance, JavTokenLog, JavBurnInfo } from "../generated/schema";
+import {TOTAL_STATISTIC_ID, weiToEth, ZERO_ADDRESS} from "./util";
 
 export function handleTransfer(event: Transfer): void {
   let entity = new JavTokenLog(
@@ -38,4 +38,18 @@ export function handleTransfer(event: Transfer): void {
   balanceTo.balance = balanceTo.balance.plus(event.params.value);
   balanceTo.balanceEth = weiToEth(balanceTo.balance);
   balanceTo.save();
+
+  if (event.params.to == ZERO_ADDRESS) {
+    let javBurnInfo = JavBurnInfo.load(TOTAL_STATISTIC_ID);
+    if (javBurnInfo == null) {
+      javBurnInfo = new JavBurnInfo(TOTAL_STATISTIC_ID);
+      javBurnInfo.totalJavBurned = BigDecimal.zero();
+    }
+
+    javBurnInfo.totalJavBurned = javBurnInfo.totalJavBurned.plus(
+        weiToEth(event.params.value)
+    );
+
+    javBurnInfo.save();
+  }
 }
